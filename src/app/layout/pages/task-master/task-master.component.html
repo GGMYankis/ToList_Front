@@ -1,0 +1,134 @@
+<div class="card-task">
+    <div class="header-task">
+        <h1 class="title-card">Tareas de {{NameTeam}}</h1>
+        <p-button class="btn-register" label="Crear Tarea" icon="pi pi-check" (click)="showModal()" />
+    </div>
+    <hr class="line" />
+
+    <div class="task-container">
+        <div class="task">
+            <h2 class="title-space-task pending-tasks">Tareas pendientes</h2>
+            <div class="task-box pending-tasks" (click)="viewTaskMovil(task)" pDroppable
+                (onDrop)="drop('pendiente' , task.id_estado)" pDraggable (onDragStart)="dragStart(task)"
+                (onDragEnd)="dragEnd()" *ngFor="let task of ListOfPendingTasks">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1>{{task.Titulo}}</h1>
+                </div>
+                <p class="text-descripcion">{{ task.Descripcion.length > 100 ? (task.Descripcion.substring(0, 100) +
+                    '...') : task.Descripcion }}
+
+                <div class="date-task">
+                    <h3 class="date" [ngClass]="{ 'vencio': esFechaVencida(task.FechaVencimiento) }"><i
+                            class='bx bx-alarm-exclamation'></i> {{ task.FechaVencimiento.substring(0, 10)}}</h3>
+                    <h4 [ngStyle]="{'background-color':task.priority_color}">{{task.prioridad}}</h4>
+                </div>
+                <div class="name-user">
+                    {{task.NombreUsuario.substring(0, 1)}}
+                </div>
+
+                <div class="check-complete" *ngIf="user.id_rol  == 2">
+                    <input type="checkbox" (click)="changeStatusMovil(task)">
+                </div>
+
+
+            </div>
+        </div>
+        <div class="task ">
+            <h2 class="title-space-task tasks-completed">Tareas completadas {{ListOfCompletedTasks?.length}}</h2>
+            <div class="task-box tasks-completed" (click)="viewTaskMovil(task)" pDroppable
+                (onDrop)="drop('completadas' , task?.id_estado)" pDraggable (onDragStart)="dragStart(task)"
+                *ngFor="let task of ListOfCompletedTasks">
+                <div style="display: flex; justify-content: space-between;">
+                    <h1>{{task?.Titulo}}</h1>
+                    <i *ngIf="task?.revisada" style="font-size: 25px; color: green;" class="bx bx-check"></i>
+                </div>
+
+                <p class="text-descripcion">{{ task?.Descripcion?.length > 50 ? (task?.Descripcion?.substring(0, 50) +
+                    '...') : task?.Descripcion }}
+                </p>
+
+                <div class="date-task">
+                    <h3 class="date" [ngClass]="{ 'vencio': esFechaVencida(task?.FechaVencimiento) }"><i
+                            class='bx bx-alarm-exclamation'></i>{{task.FechaVencimiento.substring(0, 10)}}
+                    </h3>
+                    <h4 [ngStyle]="{'background-color':task?.priority_color}">{{task?.prioridad}}</h4>
+                </div>
+                <div class="name-user">
+
+                    {{task?.NombreUsuario.substring(0, 1)}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="view-task-movil">
+    <div class="header-movil-view">
+        <div class="sub-heder">
+            <i (click)="closeTaskMovil()" class='bx bx-arrow-back'></i>
+            <h1>Viva Medic</h1>
+        </div>
+        <div class="creador">
+            <span>
+                Asig. Por: <p-tag value={{taskSelected?.creador}} />
+
+            </span>
+
+            <div class="fecha_registrada">
+                <p-tag value={{fecha(taskSelected?.FechaCreacion)}} />
+            </div>
+        </div>
+
+    </div>
+    <div class="body">
+        <div>
+            <h1 class="title-task-movil">{{taskSelected?.Titulo}}</h1>
+            <p-inputSwitch *ngIf="taskSelected?.revisada == false  && user.id_rol  == 1 && taskSelected.id_estado == 3"
+                (click)="RegisterRevisada()" />
+            <div class="revisada" *ngIf="taskSelected?.revisada">
+                <h2>Revisada</h2>
+            </div>
+
+        </div>
+
+        <label><i class='bx bx-menu-alt-left'></i> Descripcion</label>
+
+        <div class="description">
+            {{taskSelected?.Descripcion}}
+        </div>
+
+
+
+        <label><i class='bx bx-message-dots'></i>Comentarios</label>
+
+        <form [formGroup]="formulario" class="form-coment">
+            <input formControlName="comentario" placeholder="Escribe un comentario...">
+            <button class="btn-coment" *ngIf="formulario.valid" [disabled]="formulario.invalid"
+                (click)="RegisterComment()">Guardar</button>
+        </form>
+
+        <div class="container-comment">
+
+            <div class="comment" *ngFor="let c  of ListOfComment">
+                <div class="name-coment">
+                    <h3>{{c.nombre.substring(0,1)}}</h3>
+                </div>
+                <div class="comment-text">
+                    <h3>{{c.nombre}}</h3>
+                    <h4>2 days ago5 Faves</h4>
+                    <p><strong>{{c.descripcion}}</strong></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="btn-register-task" *ngIf="user.id_rol == 1" (click)="showModal()"><i class='bx bx-plus'></i></div>

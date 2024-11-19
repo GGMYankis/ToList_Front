@@ -1,0 +1,128 @@
+<div class="container-layout">
+    <div class="nav-movil">
+        <ul>
+            <li (click)="close2()"><i class='bx bx-home-smile'></i><a [routerLink]="['/pages/teams']">Equipos</a></li>
+            <li (click)="close2()"><i class='bx bx-star'></i><a [routerLink]="['/pages/teams']">Importante</a></li>
+            <li (click)="close2()"><i class='bx bx-star'></i><a [routerLink]="['/pages/users']">Usuarios</a></li>
+            <li (click)="close2()"><i class='bx bx-star'></i><a href="/">Cerrar Sesion</a></li>
+        </ul>
+
+    </div>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxs-grid-alt'></i>
+            <span class="logo_name">Task Master</span>
+
+        </div>
+
+        <ul class="nav_link">
+            <li>
+                <a href="pages/teams">
+                    <i class='bx bxs-grid-alt'></i>
+                    <span class="teams">Grupos de Trabajos</span>
+                </a>
+            </li>
+            <li>
+                <a href="pages/myTask">
+                    <i class='bx bxs-grid-alt'></i>
+                    <span class="teams">Mis tareas asignadas</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="pages/users">
+                    <i class='bx bxs-grid-alt'></i>
+                    <span class="teams">Tableros de Usuarios</span>
+                </a>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a>
+                        <i class='bx bxs-grid-alt'></i>
+                        <span class="link_name">Tareas</span>
+                    </a>
+                    <i class='bx bx-chevron-right arrow' (click)="addClassToParent($event)"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="icon-link">
+                    <a>
+
+                        <i class='bx bxs-grid-alt'></i>
+                        <span class="link_name">Category</span>
+                    </a>
+                    <i class='bx bx-chevron-right arrow' (click)="addClassToParent($event)"></i>
+
+                </div>
+                <ul class="sub-menu">
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                    <li><a>Web design</a></li>
+                </ul>
+            </li>
+
+
+
+        </ul>
+    </div>
+    <div class="route-layout">
+        <div class="header-movil">
+            <div class="option-header">
+                <div class="user-autenticate">
+                    <div class="first">
+                        {{userAutenticate.nombre.substring(0,1)}}
+                    </div>
+                    <div>
+                        <h2>{{userAutenticate.nombre}}</h2>
+                        <p>{{userAutenticate.correo}}</p>
+                    </div>
+                </div>
+
+
+                <span class="logo_name">Task Master</span>
+
+            </div>
+        </div>
+
+        <div class="children">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+<div class="header-footer">
+    <div class="item">
+        <a [routerLink]="['/pages/teams']" (click)="setActive('teams')" [ngClass]="{'active': activeLink === 'teams'}">
+            <i class='bx bx-home'></i>
+            <h3>Inicio</h3>
+        </a>
+    </div>
+    <div class="item">
+        <a [routerLink]="['/pages/users']" (click)="setActive('users')" [ngClass]="{'active': activeLink === 'users'}">
+            <i class='bx bx-user'></i>
+            <h3>Usuarios</h3>
+        </a>
+    </div>
+    <div class="item">
+        <a [routerLink]="['/pages/notificaciones']" (click)="setActive('important')"
+            [ngClass]="{'active': activeLink === 'important'}">
+            <i class='bx bx-bell'></i>
+
+            <h3>Notificaciones</h3>
+        </a>
+    </div>
+    <div class="item">
+        <a [routerLink]="['/']" (click)="logout()" [ngClass]="{'active': activeLink === 'logout'}">
+            <i class='bx bx-log-in-circle'></i>
+            <h3>Salir</h3>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<p-toast />
+
+
+
+<!-- <div class="header-login">
+    <h1>Task Master</h1>
+</div>
+ -->
+
+<div class="container-movil bg-glass">
+
+    <img src="../../assets/image.png">
+    <form class="login-movil" [formGroup]="formulario">
+        <p class="text-error" *ngIf="error">Correo electronico y/o Contraseñas incorrectas</p>
+        <div class="row g-3">
+            <div class="col-12">
+                <label>Correo electronico</label>
+                <input type="text" formControlName="email">
+            </div>
+            <div class="col-12">
+                <label>Contraseña</label>
+                <input type="password" formControlName="password">
+            </div>
+            <div class="co-12">
+                <button class="btn" (click)="login()" [disabled]="formulario.invalid">Iniciar
+                    sesion</button>
+
+            </div>
+        </div>
+
+    </form>
+</div>

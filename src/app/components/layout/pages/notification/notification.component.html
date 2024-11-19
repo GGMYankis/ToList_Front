@@ -1,0 +1,15 @@
+<div class="notificaciones">
+    <h1>Notificaciones</h1>
+    <a (click)="viewTask(n)" [routerLink]="['/pages/tareas', n?.id_teams , n?.nombre]" class="box"
+        *ngFor="let n of notificaciones">
+        <div class="name">
+            {{n.notificador.substring(0,1)}}
+        </div>
+        <div class="detalles">
+            <h4>{{n.descripcion}}.</h4>
+            {{n.fecha_creacion.substring(0,10)}}
+            <p></p>
+        </div>
+
+    </a>
+</div>

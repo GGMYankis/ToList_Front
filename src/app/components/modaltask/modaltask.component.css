@@ -1,0 +1,13 @@
+label {
+    display: block;
+}
+
+.col-12 {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    background-color: var(--bg-color);
+    color: #fff;
+}

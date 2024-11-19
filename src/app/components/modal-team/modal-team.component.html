@@ -1,0 +1,40 @@
+<div class="form-containers">
+    <form [formGroup]="formulario" class="task-form">
+        <div class="header">
+            <h1>Crear equipo de trabajo</h1>
+        </div>
+        <label>Fondo</label>
+        <div class="container-images">
+            <div class="images" (click)="changeColor(c)" *ngFor="let c of ListColor"
+                [ngStyle]="{'background-image': c.colorName}"></div>
+        </div>
+
+        <div class="form-values">
+
+            <div class="form-group">
+                <label for="titulo">Lider de equipo</label>
+                <p-dropdown [style]="{width:'100%'}" [options]="ListAdmins" formControlName="idLeader"
+                    optionLabel="nombre" placeholder="Seleccionar Usuario" [showClear]="true" [filter]="true"
+                    filterBy="nombre" optionValue="id" />
+            </div>
+            <div class="form-group">
+                <label for="titulo">Nombre del equipo</label>
+                <input type="text" pInputText formControlName="nombre" />
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Fondo del equipo</label>
+                <input type="text" pInputText formControlName="fondo" />
+            </div>
+
+
+
+            <button class="btn" (click)="RegisterTeam()" [disabled]="formulario.invalid">
+                Guardar
+            </button>
+        </div>
+
+
+
+
+    </form>
+</div>

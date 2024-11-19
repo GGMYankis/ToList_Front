@@ -1,0 +1,85 @@
+.header-users {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.title-card {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.btn i {
+    font-size: 20px;
+}
+
+/* Estilos generales */
+.user-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos de botones */
+.edit-button,
+.delete-button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Botón de Editar */
+.edit-button {
+    background-color: var(--bg-color);
+    color: #fff;
+    border: none;
+    opacity: 0.5;
+}
+
+.edit-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Botón de Eliminar */
+.delete-button {
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+}
+
+/* Para pantallas grandes (se ocultan las tarjetas y se muestra la tabla) */
+@media (min-width: 768px) {
+    .user-card {
+        display: none;
+    }
+}
+
+/* Para pantallas pequeñas (se oculta la tabla y se muestran las tarjetas) */
+@media (max-width: 768px) {
+    .user-table {
+        display: none;
+    }
+
+    .user-card {
+        display: block;
+    }
+}

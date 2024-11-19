@@ -1,0 +1,81 @@
+<p-card>
+    <div class="header-task">
+        <h1 class="title-card">Tareas de</h1>
+        <p-button label="Crear Tarea" icon="pi pi-check" (click)="showModal()" />
+    </div>
+    <hr />
+
+    <div class="task-container">
+
+
+        <div class="task">
+            <h2 class="title-space-task pending-tasks">Tareas pendientes</h2>
+            <div class="task-box pending-tasks" (click)="viewTask(task)" *ngFor="let task of ListOfPendingTasks">
+                <h1>{{task.Titulo}}</h1>
+                <p>{{ task.Descripcion.length > 100 ? (task.Descripcion.substring(0, 100) + '...') : task.Descripcion }}
+                </p>
+
+                <div class="date-task">
+                    <h3><i class='bx bx-alarm-exclamation'></i> {{task.FechaVencimiento.substring(0, 10)}}</h3>
+                    <h4 [ngStyle]="{'background-color':task.priority_color}">{{task.prioridad}}</h4>
+
+                </div>
+                <div class="name-user">
+                    {{task.NombreUsuario.substring(0, 1)}}
+                </div>
+            </div>
+        </div>
+        <div class="task ">
+            <h2 class="title-space-task tasks-in-progress">Tareas en progreso</h2>
+            <div class="task-box tasks-in-progress" (click)="viewTask(task)" *ngFor="let task of ListOfProgressTasks">
+                <h1>{{task.Titulo}}</h1>
+                <p>{{ task.Descripcion.length > 100 ? (task.Descripcion.substring(0, 100) + '...') : task.Descripcion }}
+                </p>
+
+                <div class="date-task">
+                    <h3><i class='bx bx-alarm-exclamation'></i>{{task.FechaVencimiento.substring(0, 10)}}</h3>
+                    <h4 [ngStyle]="{'background-color':task.priority_color}">{{task.prioridad}}</h4>
+
+
+                </div>
+                <div class="name-user">
+
+                    {{task.NombreUsuario.substring(0, 1)}}
+                </div>
+            </div>
+        </div>
+        <!--       <div class="task ">
+            <h2 class="title-space-task tasks-onhold">Tareas en espera</h2>
+            <div class="task-box tasks-onhold" *ngFor="let task of ListTask">
+                <h1>{{task.Titulo}}</h1>
+                <p>{{task.Descripcion}}</p>
+            </div>
+
+        </div> -->
+        <div class="task ">
+            <h2 class="title-space-task tasks-completed">Tareas completadas</h2>
+            <div class="task-box tasks-completed" (click)="viewTask(task)" *ngFor="let task of ListOfCompletedTasks">
+                <h1>{{task.Titulo}}</h1>
+                <p>{{ task.Descripcion.length > 100 ? (task.Descripcion.substring(0, 100) + '...') : task.Descripcion }}
+                </p>
+
+                <div class="date-task">
+                    <h3><i class='bx bx-alarm-exclamation'></i>{{task.FechaVencimiento.substring(0, 10)}}</h3>
+                    <h4 [ngStyle]="{'background-color':task.priority_color}">{{task.prioridad}}</h4>
+
+
+
+                </div>
+                <div class="name-user">
+
+                    {{task.NombreUsuario.substring(0, 1)}}
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</p-card>

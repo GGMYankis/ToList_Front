@@ -1,0 +1,39 @@
+.notificaciones {
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+}
+
+
+.notificaciones.open {
+    left: 0;
+}
+
+.notificaciones .box {
+    display: flex;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.notificaciones .name {
+    width: 50px;
+    min-width: 50px;
+    height: 50px;
+    background-color: #1d1b31;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+}
+
+.notificaciones .detalles {
+    display: block;
+}
+
+.notificaciones .detalles h4 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}

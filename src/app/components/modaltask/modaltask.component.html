@@ -1,0 +1,52 @@
+<div class="form-containers">
+    <form [formGroup]="formulario" class="task-form">
+        <div class="row">
+            <div class="col-12 mt-4">
+                <label for="titulo"><i class='bx bx-captions'></i>Título</label>
+                <input type="text" pInputText formControlName="titulo" style="width: 100%;" />
+            </div>
+            <div class="col-12">
+                <label for="descripcion"><i class='bx bx-note'></i>Descripción</label>
+                <input type="text" pInputText formControlName="descripcion" style="width: 100%;" />
+            </div>
+            <div class="col-12">
+                <label for="id_user"><i class='bx bx-star'></i>Prioridad</label>
+                <p-dropdown [style]="{width:'100%'}" [options]="ListPriority" formControlName="id_priority"
+                    optionLabel="descripcion" [showClear]="true" [filter]="true" filterBy="user_name"
+                    optionValue="id" />
+            </div>
+
+            <div class="col-12">
+                <label for="id_user"><i class='bx bx-user'></i>Usuario</label>
+                <p-dropdown [style]="{width:'100%'}" [options]="ListUsers" formControlName="id_user"
+                    optionLabel="nombre" [showClear]="true" [filter]="true" filterBy="user_name" optionValue="id" />
+            </div>
+
+
+            <div class="col-12">
+                <label for="id_Estado"><i class='bx bx-pause'></i>
+                    Estado de la Tarea</label>
+                <p-dropdown [style]="{width:'100%'}" [options]="ListTaskStatus" formControlName="id_Estado"
+                    optionLabel="descripcion" [showClear]="true" [filter]="true" filterBy="descripcion"
+                    optionValue="id" />
+            </div>
+
+
+
+            <div class="col-12">
+                <label for="fechaVencimiento">Fecha de Vencimiento</label>
+                <p-calendar [minDate]="minDate" formControlName="fechaVencimiento" [style]="{ width: '100%' }" />
+            </div>
+
+
+
+
+            <button class="btn" (click)="RegisterTask()">
+                Guardar
+            </button>
+        </div>
+
+
+    </form>
+</div>
+<p-toast />

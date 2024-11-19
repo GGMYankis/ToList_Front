@@ -1,0 +1,49 @@
+<div>
+    <form [formGroup]="formulario">
+        <div class="flex flex-column gap-2 box-form">
+            <label for="username">Equipo a pertenecer</label>
+            <p-dropdown [style]="{width:'100%'}" [options]="ListTeams" formControlName="idTeam" optionLabel="nombre"
+                placeholder="Seleccionar Usuario" [showClear]="true" [filter]="true" filterBy="nombre"
+                optionValue="id" />
+            <!--     <small id="username-help">
+                Enter your username to reset your password.
+            </small> -->
+        </div>
+        <div class="flex flex-column gap-2  box-form">
+            <label for="username">Username</label>
+            <input formControlName="nombre" pInputText id="username" aria-describedby="username-help" />
+            <!--     <small id="username-help">
+                Enter your username to reset your password.
+            </small> -->
+        </div>
+        <div class="flex flex-column gap-2 box-form">
+            <label for="username">Correo</label>
+            <input formControlName="correo" pInputText id="username" aria-describedby="username-help" />
+            <!--  <small id="username-help">
+                Enter your username to reset your password.
+            </small> -->
+        </div>
+        <div class="flex flex-column gap-2 box-form">
+            <label for="username">Rol</label>
+            <p-dropdown [style]="{width:'100%'}" [options]="ListRules" formControlName="idRol" optionLabel="nombre"
+                placeholder="Seleccionar Usuario" [showClear]="true" [filter]="true" filterBy="nombre"
+                optionValue="id" />
+            <!--   <small id="username-help">
+                Enter your username to reset your password.
+            </small> -->
+        </div>
+        <div class="flex flex-column gap-2 box-form">
+            <label for="username">Contraseña</label>
+            <input formControlName="clave" pInputText id="username" aria-describedby="username-help" />
+            <!--    <small id="username-help">
+                Enter your username to reset your password.
+            </small> -->
+        </div>
+
+
+
+
+
+        <button class="btn" (click)="RegisterUser()">Guardar</button>
+    </form>
+</div>
