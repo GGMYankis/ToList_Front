@@ -7,8 +7,59 @@
 
         <p><strong>Equipo:</strong> {{ user.nombre_equipo }}</p>
         <button class="edit-button" (click)="Edit(user)"> <i class='bx bx-edit-alt'></i></button>
-        <!--  <button class="delete-button">Delete</button> -->
     </div>
+</div>
+
+<!-- <div class="mb-3">
+    <p-button 
+        type="button" 
+        icon="pi pi-chevron-left" 
+        (onClick)="prev()" 
+        [disabled]="isFirstPage()" 
+        styleClass="p-button-text" />
+    <p-button 
+        type="button" 
+        icon="pi pi-refresh" 
+        (onClick)="reset()" 
+        styleClass="p-button-text" />
+    <p-button 
+        type="button" 
+        icon="pi pi-chevron-right" 
+        (onClick)="next()" 
+        [disabled]="isLastPage()" 
+        styleClass="p-button-text" />
+</div> -->
+
+<h1 class="title-desktop">Empleados</h1>
+<div class="card_personality">
+
+    <p-table [value]="ListUsers" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[10, 25, 50]">
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Correo</th>
+                <th style="width:25%">Rol</th>
+                <th style="width:25%">Equipo</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>{{ customer.nombre }}</td>
+                <td>{{ customer.correo }}</td>
+                <td>{{ customer.nombre_rol }}</td>
+                <td>{{ customer.nombre_equipo}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text" />
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text" />
+        </ng-template>
+    </p-table>
 </div>
 
 <div class="btn-register-task" *ngIf="user.id_rol == 1" (click)="Register()"><i class='bx bx-plus'></i></div>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { getUser } from '../../../../Helpers/auth';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { NotificacionService } from '../../../../services/notificacion.service';
-import { MaterialModule } from '../../../../material.module';
-import * as moment from 'moment';
+import moment from 'moment';
+import { MaterialModule } from '../../../material.module';
+import { NotificacionService } from '../../../services/notificacion.service';
+import { getUser } from '../../../Helpers/auth';
 @Component({
   selector: 'app-notification',
   standalone: true,
@@ -39,11 +39,15 @@ export class NotificationComponent implements OnInit {
   }
 
   viewTask(task: any) {
-    console.log(task)
-    /*     this.notificacionService.changeStatus(task?.id).subscribe({
-          next: (data) => {
-            this.getNotification();
-          }
-        }) */
+    this.notificacionService.changeStatus(task?.id).subscribe({
+      next: (data) => {
+        this.getNotification();
+      }
+    })
+  }
+
+  fecha(date: string | null | undefined): string {
+    if (!date) return 'Fecha no disponible';
+    return moment(date).fromNow();
   }
 }

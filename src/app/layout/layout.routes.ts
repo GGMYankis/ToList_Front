@@ -5,7 +5,7 @@ import { PruebaComponent } from './pages/prueba/prueba.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { MyTaskComponent } from './pages/my-task/my-task.component';
 import { UserComponent } from './pages/user/user.component';
-import { NotificationComponent } from '../components/layout/pages/notification/notification.component';
+import { NotificationComponent } from './pages/notification/notification.component';
 
 
 export const routes: Routes = [
@@ -34,7 +34,8 @@ export const routes: Routes = [
             {
                 path: 'users',
                 component: UserComponent,
-            },
+            }
+
         ],
     },
 ];

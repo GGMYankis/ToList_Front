@@ -49,18 +49,9 @@ export class UserComponent {
 
 
   GetUser() {
-
     this.userService.List().subscribe({
       next: (data) => {
-
-        if (this.user.id == 1) {
-          this.ListUsers = data.value;
-        } else {
-          this.ListUsers = data.value.filter((u: any) => u.id == this.user.id)
-
-        }
-
-
+        this.ListUsers = data.value;
       }
     })
   }

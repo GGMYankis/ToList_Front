@@ -74,6 +74,20 @@ export class TaskMasterComponent implements OnInit {
         }
       })
     } else {
+
+      if (this.IdTeam != this.user.id_team) {
+
+        this.taskService.ListUserTaskOtherTeam(this.user.id).subscribe({
+          next: (data) => {
+            console.log(data.value)
+            this.ListOfCompletedTasks = data.value.tareasCompletadas;
+            this.ListOfPendingTasks = data.value.tareasPendientes;
+          }
+        })
+        return
+      }
+
+
       this.taskService.ListMyTask(this.user.id).subscribe({
         next: (data) => {
           this.ListOfCompletedTasks = data.value.tareasCompletadas;

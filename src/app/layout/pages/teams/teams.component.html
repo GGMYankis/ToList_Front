@@ -1,7 +1,7 @@
+<h1 class="title-desktop">Equipos de trabajo</h1>
+
 <div class="card-layout">
 
-    <h1 class="title"><i class='bx bx-table'></i> Equipos de trabajo</h1>
-    <hr class="line">
     <div class="container-team">
         <a [routerLink]="['/pages/tareas/', team?.id , team?.nombre]" class="box" *ngFor="let team of ListTeams"
             [ngStyle]="{'background-image': team?.fondo}">
@@ -11,7 +11,11 @@
                 <h1>{{ team?.lider }}</h1>
             </div>
         </a>
+
+        <a class="box register" (click)="Register()">
+            <h1>Crear nuevo equipo</h1>
+        </a>
     </div>
 </div>
 
-<div class="btn-register-task" *ngIf="user.id_rol == 1" (click)="Register()"><i class='bx bx-plus'></i></div>
+<div class="btn-register-task" (click)="Register()"><i class='bx bx-plus'></i></div>

@@ -35,7 +35,6 @@ export class ModalTeamComponent implements OnInit {
   }
 
   RegisterTeam() {
-    console.log(this.formulario.value)
     this.teamService.Register(this.formulario.value).subscribe({
       next: (data) => {
         this.ref.close();

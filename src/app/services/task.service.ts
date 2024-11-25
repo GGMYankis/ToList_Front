@@ -14,6 +14,12 @@ export class TaskService {
   ListMyTask(id: number): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(`${urlApi}/task-master/user/${id}`);
   }
+
+
+  ListUserTaskOtherTeam(id: number): Observable<ResponseApi> {
+    return this.http.get<ResponseApi>(`${urlApi}/task-master/solicitudes/${id}`);
+  }
+
   List(idTeam: number): Observable<ResponseApi> {
     return this.http.get<ResponseApi>(`${urlApi}/task-master/${idTeam}`);
   }

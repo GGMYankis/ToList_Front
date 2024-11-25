@@ -20,6 +20,7 @@ export const routes: Routes = [
         component: PruebaComponent,
         pathMatch: 'full',
     },
+
     {
         path: 'pages',
         loadChildren: () =>

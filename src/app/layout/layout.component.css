@@ -1,7 +1,7 @@
 .container-layout {
     width: 100%;
     height: calc(100vh - 70px);
-    display: flex;
+    display: none;
 }
 
 .route-layout {
@@ -11,7 +11,7 @@
 
 .children {
     width: 100%;
-    padding: 0;
+    padding: 30px;
 }
 
 .header-layout {
@@ -314,6 +314,7 @@
     font-size: 30px;
     margin-bottom: 5px;
     color: black;
+    position: relative;
 
 }
 
@@ -361,7 +362,36 @@
     font-size: 10px;
 }
 
+.count {
+    color: white;
+    position: absolute;
+    background-color: red;
+    top: -4px;
+    right: -20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+}
+
+
+
+@media(min-width:600px) {
+    .header-footer {
+        display: none;
+    }
+
+}
+
 @media(max-width:600px) {
+
+    .container-layout {
+        display: flex;
+    }
+
     .sidebar {
         position: fixed;
         width: 100%;

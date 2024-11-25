@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
   userAutenticate: any = null;
   activeLink: string = '';
 
-  notificaciones: any[] = [];
+  Countnotificaciones: number = 0;
 
 
   constructor(
@@ -47,12 +47,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
     this.userAutenticate = getUser();
 
-    this.notificacionService.List(getUser().id).subscribe({
-      next: (data) => {
-        console.log(data)
-        this.notificaciones = data.value
-      }
-    })
+    this.getNotification();
 
   }
 
@@ -61,5 +56,13 @@ export class LayoutComponent implements OnInit {
     deleteToken();
   }
 
+  getNotification() {
+    this.notificacionService.List(getUser().id).subscribe({
+      next: (data) => {
+        this.Countnotificaciones = data.value.length
+
+      }
+    })
+  }
 
 }

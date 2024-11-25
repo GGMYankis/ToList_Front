@@ -32,20 +32,26 @@ export class TeamsComponent implements OnInit {
 
   GetTeam() {
 
-    if (this.user.id_rol == 1) {
-      this.teamService.List().subscribe({
-        next: (data) => {
-          this.ListTeams = data.value;
-        }
-      })
-      return;
-    }
-
-    this.teamService.ListByUser(getUser().id).subscribe({
+    this.teamService.List().subscribe({
       next: (data) => {
         this.ListTeams = data.value;
       }
     })
+
+    /*    if (this.user.id_rol == 1) {
+         this.teamService.List().subscribe({
+           next: (data) => {
+             this.ListTeams = data.value;
+           }
+         })
+         return;
+       } */
+
+    /*     this.teamService.ListByUser(getUser().id).subscribe({
+          next: (data) => {
+            this.ListTeams = data.value;
+          }
+        }) */
   }
 
   ngOnInit(): void {
