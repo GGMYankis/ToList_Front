@@ -67,6 +67,7 @@ export class TaskMasterComponent implements OnInit {
 
 
     if (this.user.id_rol == 1) {
+      console.log('entro admin')
       this.taskService.List(this.activatedRoute.snapshot.params['id']).subscribe({
         next: (data) => {
           this.ListOfCompletedTasks = data.value.tareasCompletadas;
@@ -76,7 +77,6 @@ export class TaskMasterComponent implements OnInit {
     } else {
 
       if (this.IdTeam != this.user.id_team) {
-
         this.taskService.ListUserTaskOtherTeam(this.user.id).subscribe({
           next: (data) => {
             console.log(data.value)
@@ -99,7 +99,23 @@ export class TaskMasterComponent implements OnInit {
   }
 
   showModal() {
-    this.ref = this.dialogService.open(ModaltaskComponent, { header: 'Crear nueva tarea', width: '90%', height: '90%', data: this.IdTeam });
+    // Detecta el ancho de la ventana
+    const screenWidth = window.innerWidth;
+
+    // Ajusta el ancho según el tamaño de la pantalla
+    let modalWidth = '30%';  // valor por defecto
+    if (screenWidth <= 600) {
+      modalWidth = '90%';  // Si la pantalla es más pequeña o igual a 600px
+    }
+
+    // Abre el modal con el ancho responsivo
+    this.ref = this.dialogService.open(ModaltaskComponent, {
+      header: 'Crear nueva tarea',
+      width: modalWidth,  // Usamos el valor calculado
+      data: this.IdTeam
+    });
+
+    // Suscripción para cerrar el modal y actualizar la lista
     this.ref.onClose.subscribe(() => {
       this.List();
     });

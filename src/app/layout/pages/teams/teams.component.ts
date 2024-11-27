@@ -60,7 +60,24 @@ export class TeamsComponent implements OnInit {
   }
 
   Register() {
-    this.ref = this.dialogService.open(ModalTeamComponent, { height: '80%', width: '90%', data: null });
+
+    // Detecta el ancho de la ventana
+    const screenWidth = window.innerWidth;
+
+    // Ajusta el ancho según el tamaño de la pantalla
+    let modalWidth = '30%';  // valor por defecto
+    if (screenWidth <= 600) {
+      modalWidth = '90%';  // Si la pantalla es más pequeña o igual a 600px
+    }
+
+    // Abre el modal con el ancho responsivo
+    this.ref = this.dialogService.open(ModalTeamComponent, {
+      header: 'Crear nueva tarea',
+      width: modalWidth,  // Usamos el valor calculado
+      data: null
+    });
+
+
     this.ref.onClose.subscribe(() => {
       this.GetTeam();
     });

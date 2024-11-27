@@ -48,6 +48,6 @@ export class NotificationComponent implements OnInit {
 
   fecha(date: string | null | undefined): string {
     if (!date) return 'Fecha no disponible';
-    return moment(date).fromNow();
+    return moment(date).format('dddd');
   }
 }

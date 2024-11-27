@@ -30,7 +30,11 @@
         styleClass="p-button-text" />
 </div> -->
 
-<h1 class="title-desktop">Empleados</h1>
+<div class="header-wiew">
+    <h1 class="title-desktop">Empleados</h1>
+
+    <button class="btn-add" (click)="Register()"> <i class='bx bx-plus'></i> Registrar</button>
+</div>
 <div class="card_personality">
 
     <p-table [value]="ListUsers" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
@@ -43,6 +47,7 @@
                 <th style="width:25%">Correo</th>
                 <th style="width:25%">Rol</th>
                 <th style="width:25%">Equipo</th>
+                <th style="width:25%">Acciones</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-customer>
@@ -51,6 +56,17 @@
                 <td>{{ customer.correo }}</td>
                 <td>{{ customer.nombre_rol }}</td>
                 <td>{{ customer.nombre_equipo}}</td>
+                <td>
+                    <div class="action">
+                        <button class="btn-action edit" (click)="Edit(customer)">
+                            <i class='bx bxs-edit-alt'></i>
+                        </button>
+                        <button class="btn-action delete">
+                            <i class='bx bxs-trash'></i>
+                        </button>
+                    </div>
+
+                </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">

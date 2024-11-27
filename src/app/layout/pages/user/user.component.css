@@ -79,11 +79,63 @@
     transform: scale(1.05);
 }
 
+.header-wiew {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action {
+    width: 100px;
+}
+
+.btn-action {
+    border: none;
+    background-color: transparent;
+    margin: 0 10px;
+}
+
+.btn-action i {
+    font-size: 20px;
+}
+
+.btn-action.edit i {
+    color: var(--bg-color);
+}
+
+.btn-action.delete i {
+    color: red;
+}
+
+
+.btn-add {
+    padding: 5px 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: .2rem;
+    background-color: var(--bg-color);
+    border: none;
+    color: #fff;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+
+}
+
+.btn-add i {
+
+    font-size: 16px;
+    margin-right: 5px;
+
+}
+
 /* Para pantallas grandes (se ocultan las tarjetas y se muestra la tabla) */
 @media (min-width: 768px) {
     .user-card {
         display: none;
     }
+
+
 }
 
 /* Para pantallas pequeñas (se oculta la tabla y se muestran las tarjetas) */
@@ -95,4 +147,17 @@
     .user-card {
         display: block;
     }
+}
+
+
+@media (max-width: 600px) {
+    .card_personality {
+        display: none;
+    }
+
+    .title-desktop {
+        display: none;
+
+    }
+
 }

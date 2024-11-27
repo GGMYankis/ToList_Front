@@ -62,14 +62,48 @@ export class UserComponent {
   }
 
   Register() {
-    this.ref = this.dialogService.open(ModalUserComponent, { header: 'Crear nuevo usuario', width: '90%', data: null });
+
+
+    const screenWidth = window.innerWidth;
+
+    // Ajusta el ancho según el tamaño de la pantalla
+    let modalWidth = '30%';  // valor por defecto
+    if (screenWidth <= 600) {
+      modalWidth = '90%';  // Si la pantalla es más pequeña o igual a 600px
+    }
+
+    // Abre el modal con el ancho responsivo
+    this.ref = this.dialogService.open(ModalUserComponent, {
+      header: 'Crear nuevo usuario',
+      width: modalWidth,  // Usamos el valor calculado
+      data: null
+    });
+
     this.ref.onClose.subscribe(() => {
       this.GetUser();
     });
   }
 
+
+
   Edit(user: any) {
-    this.ref = this.dialogService.open(ModalUserComponent, { header: 'Editar usuario', width: '90%', data: user });
+
+
+    const screenWidth = window.innerWidth;
+
+    // Ajusta el ancho según el tamaño de la pantalla
+    let modalWidth = '30%';  // valor por defecto
+    if (screenWidth <= 600) {
+      modalWidth = '90%';  // Si la pantalla es más pequeña o igual a 600px
+    }
+
+    // Abre el modal con el ancho responsivo
+    this.ref = this.dialogService.open(ModalUserComponent, {
+      header: 'Crear nueva tarea',
+      width: modalWidth,  // Usamos el valor calculado
+      data: user
+    });
+
     this.ref.onClose.subscribe(() => {
       this.GetUser();
     });
