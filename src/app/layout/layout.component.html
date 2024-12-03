@@ -76,8 +76,12 @@
                         <h2>{{userAutenticate.nombre}}</h2>
                         <p>{{userAutenticate.correo}}</p>
                     </div>
+
                 </div>
 
+                <a [routerLink]="['/']" (click)="logout()" [ngClass]="{'active': activeLink === 'logout'}">
+                    <i class='bx bx-log-out-circle'></i>
+                </a>
 
                 <span class="logo_name">Task Master</span>
 

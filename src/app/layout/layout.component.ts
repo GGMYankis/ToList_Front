@@ -3,18 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
 import { deleteToken, getUser } from '../Helpers/auth';
 import { NotificacionService } from '../services/notificacion.service';
-
+import { SpeedDialModule } from 'primeng/speeddial';
+import { MenuItem, MessageService } from 'primeng/api';
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterLink],
+  imports: [RouterOutlet, CommonModule, RouterLink, SpeedDialModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
 export class LayoutComponent implements OnInit {
   userAutenticate: any = null;
   activeLink: string = '';
-
+  items: MenuItem[] = [];
   Countnotificaciones: number = 0;
 
 
@@ -48,6 +49,17 @@ export class LayoutComponent implements OnInit {
     this.userAutenticate = getUser();
 
     this.getNotification();
+
+    this.items = [
+      {
+        icon: 'pi pi-pencil',
+
+      },
+      {
+        icon: 'pi pi-refresh',
+
+      }
+    ];
 
   }
 

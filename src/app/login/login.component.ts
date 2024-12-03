@@ -16,22 +16,21 @@ import { setInfoUser, setToken } from '../Helpers/auth';
 export class LoginComponent {
 
   formulario: FormGroup;
-
   error: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private messageService: MessageService,
     private router: Router
-
   ) {
-
     this.formulario = fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
     })
-
   }
+
+
   login() {
     this.loginService.Login(this.formulario.value).subscribe({
       next: (data) => {
@@ -41,6 +40,7 @@ export class LoginComponent {
           // this.messageService.add({ severity: 'error', summary: 'Error', detail: data.message });
           return;
         }
+
 
         setToken(data.value);
         setInfoUser(JSON.stringify(data.value.user));
