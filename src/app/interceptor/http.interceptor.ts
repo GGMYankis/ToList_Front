@@ -30,6 +30,6 @@ function showSpinner(type: string, spinnerService: SpinnerService) {
   }
 
   if (type == "other") {
-    spinnerService.show();
+    // spinnerService.show();
   }
 }

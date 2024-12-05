@@ -22,13 +22,16 @@
                             class='bx bx-alarm-exclamation'></i> {{ task.FechaVencimiento.substring(0, 10)}}</h3>
                     <h4 [ngStyle]="{'background-color':task.priority_color}">{{task.prioridad}}</h4>
                 </div>
-                <div class="name-user">
-                    {{task.NombreUsuario.substring(0, 1)}}
+                <div class="container-option">
+                    <div class="name-user">
+                        {{task.NombreUsuario.substring(0, 1)}}
+                    </div>
+
+                    <div class="check-complete" *ngIf="user.id_rol  == 2">
+                        <input type="checkbox" (click)="changeStatusMovil(task)">
+                    </div>
                 </div>
 
-                <div class="check-complete" *ngIf="user.id_rol  == 2">
-                    <input type="checkbox" (click)="changeStatusMovil(task)">
-                </div>
 
 
             </div>

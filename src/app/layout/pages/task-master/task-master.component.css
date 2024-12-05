@@ -160,6 +160,14 @@
     justify-content: center;
 }
 
+.container-option {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
 .name-user {
     width: 40px;
     height: 40px;
@@ -167,14 +175,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    right: 10px;
     background-color: #13deb9;
+    margin-right: 10px;
 }
 
 .check-complete {
-    position: absolute;
-    right: 10px;
+
     bottom: 10px;
 }
 
@@ -211,6 +217,13 @@
     height: 100vh;
     z-index: 100;
     transition: all .2s;
+}
+
+
+@media(min-width:600px) {
+    .view-task-movil {
+        width: 400px;
+    }
 }
 
 .view-task-movil label {

@@ -67,7 +67,6 @@ export class TaskMasterComponent implements OnInit {
 
 
     if (this.user.id_rol == 1) {
-      console.log('entro admin')
       this.taskService.List(this.activatedRoute.snapshot.params['id']).subscribe({
         next: (data) => {
           this.ListOfCompletedTasks = data.value.tareasCompletadas;
@@ -75,8 +74,8 @@ export class TaskMasterComponent implements OnInit {
         }
       })
     } else {
-
       if (this.IdTeam != this.user.id_team) {
+
         this.taskService.ListUserTaskOtherTeam(this.user.id).subscribe({
           next: (data) => {
             console.log(data.value)
